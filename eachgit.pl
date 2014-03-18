@@ -1,7 +1,44 @@
 #!/usr/bin/perl
-
 use strict;
 use warnings;
+
+=pod
+
+=head1 NAME
+
+eachgit.pl - Runs git commands on multiple repos at once
+
+=head1 SYNOPSIS
+
+  # Run 'git grep "Some String"' for all repos under '/path/to/repos':
+  ./eachgit.pl /path/to/repos grep \"Some String\"
+  
+  # Show git status for all repos in the current dir:
+  ./eachgit.pl . status
+
+=head1 DESCRIPTION
+
+Very simple script lets you run a git command multiple on repos at once. 
+See the SYNOPSIS for usage.
+
+I wrote this specifically so I could run C<git grep> on all my repos at once, but
+any git command works, too.
+
+
+=head1 AUTHOR
+
+Henry Van Styn <vanstyn@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2014 by IntelliTree Solutions llc.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+
+#####################################################
 use Path::Class qw( dir );
 
 my ($start, @args) = @ARGV;
@@ -17,8 +54,6 @@ die "Found no git repos under '$start_dir'\n" unless (scalar @repos > 0);
   join(" ",'git',@args),
   @repos
 );
-
-
 
 exit;
 #####################################################
@@ -53,6 +88,4 @@ sub _run_git_commands {
     qx/$cmd 1>&2/;
   }
 }
-
-
 
