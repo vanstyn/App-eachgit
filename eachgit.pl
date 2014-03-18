@@ -2,6 +2,8 @@
 use strict;
 use warnings;
 
+our $VERSION = 0.1;
+
 =pod
 
 =head1 NAME
@@ -39,9 +41,11 @@ the same terms as the Perl 5 programming language system itself.
 =cut
 
 #####################################################
+#
 use Path::Class qw( dir );
 
 my ($start, @args) = @ARGV;
+shift @args if ($args[0] && $args[0] eq 'git');
 die "Usage: ./eachgit.pl START_DIR GIT_OPTIONS\n" unless (scalar @args > 0);
 
 my $start_dir = dir( $start )->absolute->resolve;
@@ -56,6 +60,7 @@ die "Found no git repos under '$start_dir'\n" unless (scalar @repos > 0);
 );
 
 exit;
+#
 #####################################################
 
 sub _find_repos {
