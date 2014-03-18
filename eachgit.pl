@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-our $VERSION = 0.1;
+our $VERSION = 0.2;
 
 =pod
 
@@ -83,6 +83,9 @@ sub _find_repos {
 
 sub _run_git_commands {
   my ($cmd,@repos) = @_;
+  
+  # Send all STDERR output to STDOUT (needed for backtics below)
+  open(STDERR, ">&STDOUT");
   
   for my $dir (@repos) {
     local $ENV{GIT_PAGER}     = '';
