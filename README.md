@@ -1,16 +1,20 @@
-# eachgit.pl
+## App::eachgit
 
-Runs git commands on multiple repos at once
+eachgit - Run git commands on multiple repos at once.
 
-# SYNOPSIS
+## USAGE
+
+    eachgit <parent_dir> <git_args ...>
+
+## SYNOPSIS
 
     # Run 'git grep "Some String"' for all repos under '/path/to/repos':
-    ./eachgit.pl /path/to/repos grep \"Some String\"
+    eachgit /path/to/repos grep \"Some String\"
     
     # Show git status for all repos in the current dir:
-    ./eachgit.pl . status
+    eachgit . status
 
-# DESCRIPTION
+## DESCRIPTION
 
 Very simple script lets you run a git command multiple on repos at once. 
 See the SYNOPSIS for usage.
@@ -18,11 +22,11 @@ See the SYNOPSIS for usage.
 I wrote this specifically so I could run `git grep` on all my repos at once, but
 any git command works, too.
 
-# AUTHOR
+## AUTHOR
 
 Henry Van Styn <vanstyn@cpan.org>
 
-# COPYRIGHT AND LICENSE
+## COPYRIGHT AND LICENSE
 
 This software is copyright (c) 2014 by IntelliTree Solutions llc.
 
